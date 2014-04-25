@@ -4,9 +4,9 @@ public class Produto {
 
 	private String nome;
 	private double preco;
-	private String genero;
+	private Genero genero;
 
-	public Produto(String nome, double preco) {
+	public Produto(String nome, double preco, Genero genero) {
 		this.nome = nome.toUpperCase();
 		this.preco = preco;
 		this.genero = genero;
