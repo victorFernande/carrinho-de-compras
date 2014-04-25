@@ -1,5 +1,4 @@
 package br.calebe.exemplos.ex01;
-
 public class Item {
     
     private Produto produto;
@@ -15,6 +14,7 @@ public class Item {
         return equals((Item) obj);
     }
 
+    
     public boolean equals(Item obj) {
         return produto.equals(obj.produto);
     }
