@@ -48,4 +48,6 @@ public class CarrinhoTest {
         original = carrinho.menorProduto();
         assertEquals(original, copia);
     }
+    
+    
 }
