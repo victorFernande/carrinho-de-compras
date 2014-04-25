@@ -10,6 +10,14 @@ public class Item {
 		this.quantidade = quantidade;
 	}
 
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
+
+	public int getQuantidade() {
+		return quantidade;
+	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		return equals((Item) obj);

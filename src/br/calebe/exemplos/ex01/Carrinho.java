@@ -1,30 +1,24 @@
 package br.calebe.exemplos.ex01;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Carrinho {
 
-	private List<Produto> produtos;
+	private Map<Produto,Integer> itens;
 
 	public Carrinho() {
-		produtos = new ArrayList<>();
+		itens = new HashMap<Produto,Integer>();	
 	}
 
 	public void add(Produto produto) {
-		produtos.add(produto);
+		if(itens.containsKey(produto))
+			itens.put(produto,itens.get(produto)+1);
+		else	
+			itens.put(produto,1);
 	}
-
-	public Produto menorProduto() throws CarrinhoVazioExpected {
-		if (produtos.isEmpty()) {
-			throw new CarrinhoVazioExpected();
-		}
-		Produto menor = produtos.get(0);
-		for (Produto produto : produtos) {
-			if (produto.getPreco() < menor.getPreco()) {
-				menor = produto;
-			}
-		}
-		return menor;
+	
+	public boolean isEmpty() {
+		return itens.isEmpty();
 	}
 }
