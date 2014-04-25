@@ -9,6 +9,7 @@ public class Item {
         this.quantidade = quantidade;
     }
     
+    
     @Override
     public boolean equals(Object obj) {
         return equals((Item) obj);
