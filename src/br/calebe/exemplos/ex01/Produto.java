@@ -7,7 +7,7 @@ public class Produto {
 	private String genero;
 
 	public Produto(String nome, double preco) {
-		this.nome = nome;
+		this.nome = nome.toUpperCase();
 		this.preco = preco;
 		this.genero = genero;
 	}
