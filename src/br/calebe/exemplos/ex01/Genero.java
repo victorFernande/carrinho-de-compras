@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package br.calebe.exemplos.ex01;
 
 /**
@@ -11,5 +10,5 @@ package br.calebe.exemplos.ex01;
  * @author rm68360
  */
 public enum Genero {
-	
+
 }

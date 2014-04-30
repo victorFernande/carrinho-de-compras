@@ -8,18 +8,18 @@ import br.calebe.exemplos.ex02.controller.ClasseFacadeController;
  */
 public class ClasseExemplo {
 
-    private ClasseFacadeController controller;
-    private String answer;
+	private ClasseFacadeController controller;
+	private String answer;
 
-    public ClasseExemplo() throws Exception {
-        controller = new ClasseFacadeController();
-    }
+	public ClasseExemplo() throws Exception {
+		controller = new ClasseFacadeController();
+	}
 
-    public void run(int i) {
-        answer = controller.metodo(i);
-    }
-    
-    public String getAnswer() {
-        return answer;
-    }
+	public void run(int i) {
+		answer = controller.metodo(i);
+	}
+
+	public String getAnswer() {
+		return answer;
+	}
 }

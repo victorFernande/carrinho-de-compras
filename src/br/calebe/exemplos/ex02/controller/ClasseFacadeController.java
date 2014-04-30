@@ -11,17 +11,17 @@ import javax.naming.InitialContext;
  */
 public class ClasseFacadeController implements EJBStatelessInterface {
 
-    private EJBStatelessInterface ejb;
+	private EJBStatelessInterface ejb;
 
-    public ClasseFacadeController() throws Exception {
-        Properties props = new Properties();
-        props.load(new FileInputStream("jndi.properties"));
-        InitialContext ctx = new InitialContext(props);
-        ejb = (EJBStatelessInterface) ctx.lookup("ejb/EJBStatelessExemplo");
-    }
+	public ClasseFacadeController() throws Exception {
+		Properties props = new Properties();
+		props.load(new FileInputStream("jndi.properties"));
+		InitialContext ctx = new InitialContext(props);
+		ejb = (EJBStatelessInterface) ctx.lookup("ejb/EJBStatelessExemplo");
+	}
 
-    @Override
-    public String metodo(int i) {
-        return ejb.metodo(i);
-    }
+	@Override
+	public String metodo(int i) {
+		return ejb.metodo(i);
+	}
 }

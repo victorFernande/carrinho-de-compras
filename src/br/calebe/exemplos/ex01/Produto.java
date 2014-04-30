@@ -22,6 +22,6 @@ public class Produto {
 	}
 
 	public boolean equals(Produto obj) {
-		return nome.equals(obj.nome) && preco==obj.preco && genero.equals(obj.genero);
+		return nome.equals(obj.nome) && preco == obj.preco && genero.equals(obj.genero);
 	}
 }
