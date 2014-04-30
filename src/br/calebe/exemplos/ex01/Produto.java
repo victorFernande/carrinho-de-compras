@@ -16,11 +16,14 @@ public class Produto {
 		return preco;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		return equals((Produto) obj);
+	public int hashCode(){
+		return nome.hashCode()+Long.valueOf(Double.doubleToLongBits(preco)).hashCode()+genero.hashCode();
 	}
-
+	
+	public boolean equals(Object obj){
+		return equals((Produto)obj);
+	}
+	
 	public boolean equals(Produto obj) {
 		return nome.equals(obj.nome) && preco == obj.preco && genero.equals(obj.genero);
 	}
