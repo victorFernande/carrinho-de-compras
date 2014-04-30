@@ -1,6 +1,5 @@
 package br.calebe.exemplos.ex01;
 
-import br.calebe.exemplos.ex01.CarrinhoVazioExpected;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,6 +39,29 @@ public class Carrinho {
 		} else {
 			itens.put(produto, 1);
 		}
+	}
+	
+	public void removeProduto(Produto produto) throws CarrinhoVazioExpected, ProdutoInexistenteException {
+		if(canUse())
+			if (!itens.containsKey(produto))
+				throw new ProdutoInexistenteException();
+			else
+				if(itens.get(produto)==1)
+					itens.remove(produto);
+				else
+					itens.put(produto, itens.get(produto)-1);
+	}
+	
+	public void removeItem(Produto produto) throws CarrinhoVazioExpected, ProdutoInexistenteException {
+		if(canUse())
+			if (!itens.containsKey(produto))
+				throw new ProdutoInexistenteException();
+			else
+				itens.remove(produto);
+	}
+	
+	public void clean() {
+		itens.clear();
 	}
 
 	public boolean canUse() throws CarrinhoVazioExpected{
