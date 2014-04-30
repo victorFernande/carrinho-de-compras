@@ -14,9 +14,7 @@ public class CarrinhoTest {
 		carrinho = new Carrinho();
 	}
 
-	@Test(expected = CarrinhoVazioExpected.class)
 	public void colocandoZeroProduto() throws CarrinhoVazioExpected {
-		System.out.println(carrinho.isEmpty());
 		assertTrue(carrinho.isEmpty());
 	}
 

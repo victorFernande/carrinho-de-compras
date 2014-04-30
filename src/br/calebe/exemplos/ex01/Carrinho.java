@@ -13,7 +13,7 @@ public class Carrinho {
 	}
 
 	public int totalProdutos() throws CarrinhoVazioExpected {
-		if(!isEmpty());
+		if(canUse());
 		int sum = 0;
 		for (Map.Entry<Produto, Integer> entry : itens.entrySet()) {
 			sum += entry.getValue();
@@ -26,7 +26,7 @@ public class Carrinho {
 	}
 
 	public double totalValor() throws CarrinhoVazioExpected {
-		if(!isEmpty());
+		if(canUse());
 		double sum = 0;
 		for (Map.Entry<Produto, Integer> entry : itens.entrySet()) {
 			sum += entry.getKey().getPreco() * entry.getValue();
@@ -42,9 +42,13 @@ public class Carrinho {
 		}
 	}
 
-	public boolean isEmpty() throws CarrinhoVazioExpected {
-		if(itens.isEmpty())
+	public boolean canUse() throws CarrinhoVazioExpected{
+		if(isEmpty())
 			throw new CarrinhoVazioExpected();
+		return true;
+	}
+	
+	public boolean isEmpty(){
 		return itens.isEmpty();
 	}
 }
