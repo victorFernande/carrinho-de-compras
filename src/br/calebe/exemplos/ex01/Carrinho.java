@@ -65,6 +65,19 @@ public class Carrinho {
 				itens.remove(produto);
 	}
 	
+	public void removerXProdutos(Produto produto, Integer x) throws CarrinhoVazioExpected, ProdutoInexistenteException, ProdutoQuantidadeException{
+		if(canUse())
+			if (!itens.containsKey(produto))
+				throw new ProdutoInexistenteException();
+			else
+				if(x<=0 && !(itens.get(produto)>=x))
+					throw new ProdutoQuantidadeException();
+				else
+					for(int i=0;i!=x;++i)
+						removeProduto(produto);
+				
+	}
+	
 	public Set<Map.Entry<Produto,Integer>> gerarConjuntoItens(){
 		return itens.entrySet();
 	}
