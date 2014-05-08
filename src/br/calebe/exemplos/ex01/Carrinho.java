@@ -2,6 +2,7 @@ package br.calebe.exemplos.ex01;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class Carrinho {
 
@@ -62,6 +63,10 @@ public class Carrinho {
 				throw new ProdutoInexistenteException();
 			else
 				itens.remove(produto);
+	}
+	
+	public Set<Map.Entry<Produto,Integer>> gerarConjunto(){
+		return itens.entrySet();
 	}
 	
 	public void clean() {
