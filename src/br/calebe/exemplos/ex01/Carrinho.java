@@ -66,15 +66,14 @@ public class Carrinho {
 	}
 	
 	public void removerXProdutos(Produto produto, Integer x) throws CarrinhoVazioExpected, ProdutoInexistenteException, ProdutoQuantidadeException{
-		if(canUse())
-			if (!itens.containsKey(produto))
-				throw new ProdutoInexistenteException();
+		if (!itens.containsKey(produto))
+			throw new ProdutoInexistenteException();
+		else
+			if(x<=0 || x>itens.get(produto))
+				throw new ProdutoQuantidadeException();
 			else
-				if(x<=0 && !(itens.get(produto)>=x))
-					throw new ProdutoQuantidadeException();
-				else
-					for(int i=0;i!=x;++i)
-						removeProduto(produto);
+				for(int i=0;i!=x;++i)
+					removeProduto(produto);
 				
 	}
 	
