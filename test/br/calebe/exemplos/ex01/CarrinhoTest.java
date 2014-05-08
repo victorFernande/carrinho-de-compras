@@ -16,12 +16,12 @@ public class CarrinhoTest {
 		carrinho = new Carrinho();
 	}
 
-	public void colocandoZeroProdutoTest() throws CarrinhoVazioExpected {
+	public void colocandoZeroProdutoTest() throws CarrinhoVazioException {
 		assertTrue(carrinho.isEmpty());
 	}
 
 	@Test
-	public void colocandoUmProdutoTest() throws CarrinhoVazioExpected {
+	public void colocandoUmProdutoTest() throws CarrinhoVazioException {
 		Carrinho car = new Carrinho();
 		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
 		car.add(livro);
@@ -29,7 +29,7 @@ public class CarrinhoTest {
 	}
 
 	@Test
-	public void colocandoMaisProdutosTest() throws CarrinhoVazioExpected {
+	public void colocandoMaisProdutosTest() throws CarrinhoVazioException {
 		Carrinho car = new Carrinho();
 		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
 		car.add(livro);
@@ -44,7 +44,7 @@ public class CarrinhoTest {
 
 	
 	@Test
-	public void identidadeDeProdutosTest() throws CarrinhoVazioExpected {
+	public void identidadeDeProdutosTest() throws CarrinhoVazioException {
 		Carrinho car = new Carrinho();
 		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
 		car.add(livro);
@@ -55,7 +55,7 @@ public class CarrinhoTest {
 	}
 
 	@Test
-	public void removerProdutoTest() throws CarrinhoVazioExpected, ProdutoInexistenteException {
+	public void removerProdutoTest() throws CarrinhoVazioException, ProdutoInexistenteException {
 		Carrinho car = new Carrinho();
 		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
 		car.add(livro);
@@ -67,7 +67,7 @@ public class CarrinhoTest {
 	}
 	
 	@Test
-	public void removerItemTest() throws CarrinhoVazioExpected, ProdutoInexistenteException {
+	public void removerItemTest() throws CarrinhoVazioException, ProdutoInexistenteException {
 		Carrinho car = new Carrinho();
 		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
 		car.add(livro);
@@ -81,7 +81,7 @@ public class CarrinhoTest {
 	}
 	
 	@Test
-	public void limparCarrinhoTest() throws CarrinhoVazioExpected {
+	public void limparCarrinhoTest() throws CarrinhoVazioException {
 		Carrinho car = new Carrinho();
 		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
 		car.add(livro);
@@ -94,7 +94,7 @@ public class CarrinhoTest {
 	}
 	
 	@Test
-	public void totalValorTest() throws CarrinhoVazioExpected {
+	public void totalValorTest() throws CarrinhoVazioException {
 		Carrinho car = new Carrinho();
 		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
 		car.add(livro);
@@ -107,7 +107,7 @@ public class CarrinhoTest {
 	}
 	
 	@Test
-	public void totalProdutosTest() throws CarrinhoVazioExpected {
+	public void totalProdutosTest() throws CarrinhoVazioException {
 		Carrinho car = new Carrinho();
 		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
 		car.add(livro);
@@ -119,7 +119,7 @@ public class CarrinhoTest {
 	}
 	
 	@Test
-	public void totalItensTest() throws CarrinhoVazioExpected {
+	public void totalItensTest() throws CarrinhoVazioException {
 		Carrinho car = new Carrinho();
 		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
 		car.add(livro);
@@ -131,7 +131,7 @@ public class CarrinhoTest {
 	}
 	
 	@Test
-	public void totalProdutosItemTest() throws CarrinhoVazioExpected {
+	public void totalProdutosItemTest() throws CarrinhoVazioException {
 		Carrinho car = new Carrinho();
 		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
 		car.add(livro);
@@ -143,7 +143,7 @@ public class CarrinhoTest {
 	}
 	
 	@Test
-	public void obterListaItensTest() throws CarrinhoVazioExpected {
+	public void obterListaItensTest() throws CarrinhoVazioException {
 		Carrinho car = new Carrinho();
 		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
 		car.add(livro);
@@ -174,7 +174,7 @@ public class CarrinhoTest {
 	}
 	
 	@Test
-	public void obterListaProdutosTest() throws CarrinhoVazioExpected {
+	public void obterListaProdutosTest() throws CarrinhoVazioException {
 		Carrinho car = new Carrinho();
 		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
 		car.add(livro);
@@ -190,7 +190,7 @@ public class CarrinhoTest {
 	}
 	
 	@Test
-	public void removerXProdutosTest() throws CarrinhoVazioExpected, ProdutoInexistenteException, ProdutoQuantidadeException {
+	public void removerXProdutosTest() throws CarrinhoVazioException, ProdutoInexistenteException, ProdutoQuantidadeException {
 		Carrinho car = new Carrinho();
 		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
 		car.add(livro);
@@ -216,7 +216,7 @@ public class CarrinhoTest {
 	}
 	
 	@Test (expected = ProdutoQuantidadeException.class)
-	public void removerXProdutosExceptionTest() throws CarrinhoVazioExpected, ProdutoInexistenteException, ProdutoQuantidadeException {
+	public void removerXProdutosExceptionTest() throws CarrinhoVazioException, ProdutoInexistenteException, ProdutoQuantidadeException {
 		Carrinho car = new Carrinho();
 		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
 		car.add(livro);

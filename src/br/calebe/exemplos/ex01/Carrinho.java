@@ -16,7 +16,7 @@ public class Carrinho {
 		return itens.get(p);
 	}
 	
-	public int totalProdutos() throws CarrinhoVazioExpected {
+	public int totalProdutos() throws CarrinhoVazioException {
 		if(canUse());
 		int sum = 0;
 		for (Map.Entry<Produto, Integer> entry : itens.entrySet()) {
@@ -29,7 +29,7 @@ public class Carrinho {
 		return itens.size();
 	}
 
-	public double totalValor() throws CarrinhoVazioExpected {
+	public double totalValor() throws CarrinhoVazioException {
 		if(canUse());
 		double sum = 0;
 		for (Map.Entry<Produto, Integer> entry : itens.entrySet()) {
@@ -46,7 +46,7 @@ public class Carrinho {
 		}
 	}
 	
-	public void removeProduto(Produto produto) throws CarrinhoVazioExpected, ProdutoInexistenteException {
+	public void removeProduto(Produto produto) throws CarrinhoVazioException, ProdutoInexistenteException {
 		if(canUse())
 			if (!itens.containsKey(produto))
 				throw new ProdutoInexistenteException();
@@ -57,7 +57,7 @@ public class Carrinho {
 					itens.put(produto, itens.get(produto)-1);
 	}
 	
-	public void removeItem(Produto produto) throws CarrinhoVazioExpected, ProdutoInexistenteException {
+	public void removeItem(Produto produto) throws CarrinhoVazioException, ProdutoInexistenteException {
 		if(canUse())
 			if (!itens.containsKey(produto))
 				throw new ProdutoInexistenteException();
@@ -65,7 +65,7 @@ public class Carrinho {
 				itens.remove(produto);
 	}
 	
-	public void removerXProdutos(Produto produto, Integer x) throws CarrinhoVazioExpected, ProdutoInexistenteException, ProdutoQuantidadeException{
+	public void removerXProdutos(Produto produto, Integer x) throws CarrinhoVazioException, ProdutoInexistenteException, ProdutoQuantidadeException{
 		if (!itens.containsKey(produto))
 			throw new ProdutoInexistenteException();
 		else
@@ -89,9 +89,9 @@ public class Carrinho {
 		itens.clear();
 	}
 	
-	public boolean canUse() throws CarrinhoVazioExpected{
+	public boolean canUse() throws CarrinhoVazioException{
 		if(isEmpty())
-			throw new CarrinhoVazioExpected();
+			throw new CarrinhoVazioException();
 		return true;
 	}
 	
