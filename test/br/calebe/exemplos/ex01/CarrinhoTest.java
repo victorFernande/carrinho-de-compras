@@ -147,7 +147,7 @@ public class CarrinhoTest {
 	}
 	
 	@Test
-	public void obterListaTest() throws CarrinhoVazioExpected {
+	public void obterListaItensTest() throws CarrinhoVazioExpected {
 		Carrinho car = new Carrinho();
 		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
 		car.add(livro);
@@ -155,7 +155,7 @@ public class CarrinhoTest {
 		car.add(geladeira);
 		Produto livro2 = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
 		car.add(livro2);
-		Set<Map.Entry<Produto,Integer>> x = car.gerarConjunto();
+		Set<Map.Entry<Produto,Integer>> x = car.gerarConjuntoItens();
 		int sz = 0;
 		for(Map.Entry<Produto, Integer> e : x)
 			sz+=e.getValue();
@@ -175,5 +175,21 @@ public class CarrinhoTest {
 			if(e.getKey().equals(geladeira))
 				found = true;
 		assertTrue(found);
+	}
+	
+	@Test
+	public void obterListaProdutosTest() throws CarrinhoVazioExpected {
+		Carrinho car = new Carrinho();
+		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
+		car.add(livro);
+		Produto geladeira = new Produto("Geladeira", 5000.00, Genero.CASA);
+		car.add(geladeira);
+		Produto livro2 = new Produto("UML 2.0", 75.00, Genero.LIVRO);
+		car.add(livro2);
+		Set<Produto> x = car.gerarConjuntoProdutos();
+		assertEquals(x.size(),car.totalItens());
+		assertTrue(x.contains(livro));
+		assertTrue(x.contains(geladeira));
+		assertTrue(x.contains(livro2));
 	}
 }

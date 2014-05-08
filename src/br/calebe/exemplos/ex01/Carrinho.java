@@ -65,8 +65,12 @@ public class Carrinho {
 				itens.remove(produto);
 	}
 	
-	public Set<Map.Entry<Produto,Integer>> gerarConjunto(){
+	public Set<Map.Entry<Produto,Integer>> gerarConjuntoItens(){
 		return itens.entrySet();
+	}
+	
+	public Set<Produto> gerarConjuntoProdutos() {
+		return itens.keySet();
 	}
 	
 	public void clean() {
