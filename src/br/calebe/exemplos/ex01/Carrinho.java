@@ -63,7 +63,7 @@ public class Carrinho {
 	public void clean() {
 		itens.clear();
 	}
-
+	
 	public boolean canUse() throws CarrinhoVazioExpected{
 		if(isEmpty())
 			throw new CarrinhoVazioExpected();

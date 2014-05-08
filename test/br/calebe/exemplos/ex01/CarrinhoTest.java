@@ -90,4 +90,41 @@ public class CarrinhoTest {
 		car.clean();
 		assertTrue(car.isEmpty());
 	}
+	
+	@Test
+	public void totalValorTest() throws CarrinhoVazioExpected {
+		Carrinho car = new Carrinho();
+		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
+		car.add(livro);
+		Produto geladeira = new Produto("Geladeira", 5000.00, Genero.CASA);
+		car.add(geladeira);
+		Produto livro2 = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
+		car.add(livro2);
+		double soma=(livro.getPreco()+livro2.getPreco()+geladeira.getPreco());
+		assertEquals(soma, car.totalValor());
+	}
+	
+	@Test
+	public void totalProdutosTest() throws CarrinhoVazioExpected {
+		Carrinho car = new Carrinho();
+		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
+		car.add(livro);
+		Produto geladeira = new Produto("Geladeira", 5000.00, Genero.CASA);
+		car.add(geladeira);
+		Produto livro2 = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
+		car.add(livro2);
+		assertEquals(3, car.totalProdutos());
+	}
+	
+	@Test
+	public void totalItensTest() throws CarrinhoVazioExpected {
+		Carrinho car = new Carrinho();
+		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
+		car.add(livro);
+		Produto geladeira = new Produto("Geladeira", 5000.00, Genero.CASA);
+		car.add(geladeira);
+		Produto livro2 = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
+		car.add(livro2);
+		assertEquals(2, car.totalItens());
+	}
 }
