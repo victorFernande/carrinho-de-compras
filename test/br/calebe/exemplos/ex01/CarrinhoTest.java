@@ -160,8 +160,20 @@ public class CarrinhoTest {
 		for(Map.Entry<Produto, Integer> e : x)
 			sz+=e.getValue();
 		assertEquals(sz,car.totalProdutos());
-		assertTrue(x.contains(livro));
-		assertTrue(x.contains(livro2));
-		assertTrue(x.contains(geladeira));
+		boolean found = false;
+		for(Map.Entry<Produto,Integer> e : x)
+			if(e.getKey().equals(livro))
+				found = true;
+		assertTrue(found);
+		found = false;
+		for(Map.Entry<Produto,Integer> e : x)
+			if(e.getKey().equals(livro2))
+				found = true;
+		assertTrue(found);
+		found = false;
+		for(Map.Entry<Produto,Integer> e : x)
+			if(e.getKey().equals(geladeira))
+				found = true;
+		assertTrue(found);
 	}
 }
