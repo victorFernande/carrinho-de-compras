@@ -192,4 +192,30 @@ public class CarrinhoTest {
 		assertTrue(x.contains(geladeira));
 		assertTrue(x.contains(livro2));
 	}
+	
+	@Test
+	public void removerXProdutosTest() throws CarrinhoVazioExpected {
+		Carrinho car = new Carrinho();
+		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
+		car.add(livro);
+		Produto livro2 = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
+		car.add(livro2);
+		Produto livro3 = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
+		car.add(livro3);
+		Produto livro4 = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
+		car.add(livro4);
+		Produto livro5 = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
+		car.add(livro5);
+		Produto livro6 = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
+		car.add(livro6);
+		Produto livro7 = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
+		car.add(livro7);
+		Produto livro8 = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
+		car.add(livro8);
+		Produto livro9 = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
+		car.add(livro9);
+		assertEquals(9,car.totalProdutos());
+		car.removerXProdutos(5);
+		assertEquals(4,car.totalProdutos());
+	}
 }
