@@ -135,6 +135,18 @@ public class CarrinhoTest {
 	}
 	
 	@Test
+	public void totalProdutosItemTest() throws CarrinhoVazioExpected {
+		Carrinho car = new Carrinho();
+		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
+		car.add(livro);
+		Produto geladeira = new Produto("Geladeira", 5000.00, Genero.CASA);
+		car.add(geladeira);
+		Produto livro2 = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
+		car.add(livro2);
+		assertEquals(2,car.quantidadeItem(livro2));
+	}
+	
+	@Test
 	public void obterListaTest() throws CarrinhoVazioExpected {
 		Carrinho car = new Carrinho();
 		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);

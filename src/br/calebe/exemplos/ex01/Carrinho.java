@@ -11,6 +11,7 @@ public class Carrinho {
 		itens = new HashMap<Produto, Integer>();
 	}
 
+	
 	public int totalProdutos() throws CarrinhoVazioExpected {
 		if(canUse());
 		int sum = 0;
