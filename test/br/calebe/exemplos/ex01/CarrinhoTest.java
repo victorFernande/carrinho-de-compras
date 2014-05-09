@@ -188,7 +188,7 @@ public class CarrinhoTest {
 		car.add(livro, 3);
 		Produto geladeira = new Produto("Geladeira", 5000.00, Genero.CASA);
 		car.add(geladeira, 2);
-		double somaEsperada = (livro.getPreco() * 3 + geladeira.getPreco() * 2);
+		double somaEsperada = 10150.0;
 		assertEquals(somaEsperada, car.totalValor(), 0.0);
 	}
 
@@ -198,7 +198,7 @@ public class CarrinhoTest {
 		car.add(livro, 2);
 		Produto geladeira = new Produto("Geladeira", 5000.00, Genero.CASA);
 		car.add(geladeira);
-		assertEquals(3,car.produtos().size());
+		assertEquals(car.totalProdutos(),car.produtos().size());
 	}
 
 	@Test
@@ -245,10 +245,20 @@ public class CarrinhoTest {
 		car.add(geladeira);
 		Produto livro2 = new Produto("UML 2.0", 75.00, Genero.LIVRO);
 		car.add(livro2);
-		Set<Produto> x = car.itens();
-		assertEquals(x.size(), car.totalProdutos());
-		assertTrue(x.contains(livro));
-		assertTrue(x.contains(geladeira));
-		assertTrue(x.contains(livro2));
+		assertEquals(car.itens().size(), car.totalProdutos());
+	}
+	
+	@Test
+	public void integridadeListaProdutosTest() throws CarrinhoVazioException, ProdutoInexistenteException {
+		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
+		car.add(livro);
+		Produto geladeira = new Produto("Geladeira", 5000.00, Genero.CASA);
+		car.add(geladeira);
+		Produto livro2 = new Produto("UML 2.0", 75.00, Genero.LIVRO);
+		car.add(livro2);
+		Set<Produto> itens = car.itens();
+		assertTrue(itens.contains(livro));
+		assertTrue(itens.contains(geladeira));
+		assertTrue(itens.contains(livro2));
 	}
 }
