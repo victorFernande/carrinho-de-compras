@@ -13,7 +13,7 @@ public class Carrinho {
 		itens = new HashMap<Produto, Integer>();
 	}
 
-	public int itens(Produto p) {
+	public int totalItens(Produto p) {
 		return itens.get(p);
 	}
 
@@ -64,7 +64,7 @@ public class Carrinho {
 		}
 	}
 
-	public void removeProduto(Produto produto) throws CarrinhoVazioException, ProdutoInexistenteException {
+	public void removeItem(Produto produto) throws CarrinhoVazioException, ProdutoInexistenteException {
 		if (canUse()) {
 			if (!itens.containsKey(produto)) {
 				throw new ProdutoInexistenteException();
@@ -76,7 +76,7 @@ public class Carrinho {
 		}
 	}
 
-	public void removeItem(Produto produto) throws CarrinhoVazioException, ProdutoInexistenteException {
+	public void removeProduto(Produto produto) throws CarrinhoVazioException, ProdutoInexistenteException {
 		if (canUse()) {
 			if (!itens.containsKey(produto)) {
 				throw new ProdutoInexistenteException();
@@ -86,7 +86,7 @@ public class Carrinho {
 		}
 	}
 
-	public void removeXProdutos(Produto produto, Integer x) throws CarrinhoVazioException, ProdutoInexistenteException, ProdutoQuantidadeException {
+	public void removeProduto(Produto produto, Integer x) throws CarrinhoVazioException, ProdutoInexistenteException, ProdutoQuantidadeException {
 		if (canUse()) {
 			if (!itens.containsKey(produto)) {
 				throw new ProdutoInexistenteException();
@@ -94,21 +94,21 @@ public class Carrinho {
 				throw new ProdutoQuantidadeException();
 			} else {
 				if (Objects.equals(x, itens.get(produto))) {
-					removeItem(produto);
+					removeProduto(produto);
 				} else {
 					for (int i = 0; i != x; ++i) {
-						removeProduto(produto);
+						removeItem(produto);
 					}
 				}
 			}
 		}
 	}
 
-	public Set<Map.Entry<Produto, Integer>> gerarConjuntoItens() {
+	public Set<Map.Entry<Produto, Integer>> produtos() {
 		return itens.entrySet();
 	}
 
-	public Set<Produto> gerarConjuntoProdutos() {
+	public Set<Produto> itens() {
 		return itens.keySet();
 	}
 
