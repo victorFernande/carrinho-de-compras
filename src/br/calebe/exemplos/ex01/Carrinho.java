@@ -13,11 +13,11 @@ public class Carrinho {
 		itens = new HashMap<Produto, Integer>();
 	}
 
-	public int quantidadeItem(Produto p) {
+	public int itens(Produto p) {
 		return itens.get(p);
 	}
 
-	public int totalProdutos() {
+	public int totalItens() {
 		int sum = 0;
 		for (Map.Entry<Produto, Integer> entry : itens.entrySet()) {
 			sum += entry.getValue();
@@ -25,7 +25,7 @@ public class Carrinho {
 		return sum;
 	}
 
-	public int totalItens() {
+	public int totalProdutos() {
 		return itens.size();
 	}
 

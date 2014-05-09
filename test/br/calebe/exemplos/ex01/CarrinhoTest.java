@@ -31,7 +31,7 @@ public class CarrinhoTest {
 	public void colocandoUmProdutoTest() {
 		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
 		car.add(livro);
-		assertEquals(1, car.totalProdutos());
+		assertEquals(1, car.totalItens());
 	}
 
 	@Test
@@ -48,10 +48,10 @@ public class CarrinhoTest {
 		car.add(livro);
 		Produto geladeira = new Produto("Geladeira", 5000.00, Genero.CASA);
 		car.add(geladeira);
-		assertEquals(2, car.totalProdutos());
+		assertEquals(2, car.totalItens());
 		Produto livro2 = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
 		car.add(livro2);
-		assertEquals(3, car.totalProdutos());
+		assertEquals(3, car.totalItens());
 	}
 
 	@Test
@@ -60,18 +60,18 @@ public class CarrinhoTest {
 		car.add(livro);
 		Produto geladeira = new Produto("Geladeira", 5000.00, Genero.CASA);
 		car.add(geladeira);
-		assertEquals(2, car.totalProdutos());
+		assertEquals(2, car.totalItens());
 		Produto livro2 = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
 		car.add(livro2);
-		assertEquals(2, car.totalItens());
+		assertEquals(2, car.totalProdutos());
 	}
 
 	@Test
 	public void adicionarXProdutosTest() throws ProdutoQuantidadeException {
 		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
 		car.add(livro, 5);
-		assertEquals(5, car.totalProdutos());
-		assertEquals(1, car.totalItens());
+		assertEquals(5, car.totalItens());
+		assertEquals(1, car.totalProdutos());
 	}
 
 	@Test(expected = ProdutoQuantidadeException.class)
@@ -94,7 +94,7 @@ public class CarrinhoTest {
 		car.add(geladeira);
 		Produto livro2 = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
 		car.add(livro2, 5);
-		assertEquals(7, car.totalProdutos());
+		assertEquals(7, car.totalItens());
 	}
 
 	@Test
@@ -103,7 +103,7 @@ public class CarrinhoTest {
 		car.add(livro, 7);
 		Produto geladeira = new Produto("Geladeira", 5000.00, Genero.CASA);
 		car.add(geladeira, 5);
-		assertEquals(2, car.totalItens());
+		assertEquals(2, car.totalProdutos());
 	}
 
 	@Test
@@ -112,7 +112,7 @@ public class CarrinhoTest {
 		car.add(livro, 10);
 		Produto geladeira = new Produto("Geladeira", 5000.00, Genero.CASA);
 		car.add(geladeira, 7);
-		assertEquals(10, car.quantidadeItem(livro));
+		assertEquals(10, car.itens(livro));
 	}
 
 	@Test
@@ -120,8 +120,8 @@ public class CarrinhoTest {
 		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
 		car.add(livro, 5);
 		car.removeProduto(livro);
-		assertEquals(1, car.totalItens());
-		assertEquals(4, car.totalProdutos());
+		assertEquals(1, car.totalProdutos());
+		assertEquals(4, car.totalItens());
 	}
 
 	@Test(expected = ProdutoInexistenteException.class)
@@ -143,8 +143,8 @@ public class CarrinhoTest {
 		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
 		car.add(livro, 5);
 		car.removeItem(livro);
-		assertEquals(0, car.totalItens());
 		assertEquals(0, car.totalProdutos());
+		assertEquals(0, car.totalItens());
 	}
 
 	@Test(expected = ProdutoInexistenteException.class)
@@ -166,7 +166,7 @@ public class CarrinhoTest {
 		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
 		car.add(livro, 10);
 		car.removeXProdutos(livro, 5);
-		assertEquals(5, car.totalProdutos());
+		assertEquals(5, car.totalItens());
 	}
 
 	@Test(expected = ProdutoQuantidadeException.class)
@@ -223,7 +223,7 @@ public class CarrinhoTest {
 		for (Map.Entry<Produto, Integer> e : x) {
 			sz += e.getValue();
 		}
-		assertEquals(sz, car.totalProdutos());
+		assertEquals(sz, car.totalItens());
 		boolean found = false;
 		for (Map.Entry<Produto, Integer> e : x) {
 			if (e.getKey().equals(livro)) {
@@ -257,7 +257,7 @@ public class CarrinhoTest {
 		Produto livro2 = new Produto("UML 2.0", 75.00, Genero.LIVRO);
 		car.add(livro2);
 		Set<Produto> x = car.gerarConjuntoProdutos();
-		assertEquals(x.size(), car.totalItens());
+		assertEquals(x.size(), car.totalProdutos());
 		assertTrue(x.contains(livro));
 		assertTrue(x.contains(geladeira));
 		assertTrue(x.contains(livro2));
