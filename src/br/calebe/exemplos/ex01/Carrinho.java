@@ -46,7 +46,7 @@ public class Carrinho {
 	}
 
 	private boolean validaQuantidade(Produto produto, int x) {
-		return x > 0 || x <= itens.get(produto);
+		return x > 0 && x <= itens.get(produto);
 	}
 
 	private boolean validaQuantidade(int x) {
