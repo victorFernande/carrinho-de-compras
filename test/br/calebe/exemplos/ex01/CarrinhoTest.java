@@ -2,6 +2,7 @@ package br.calebe.exemplos.ex01;
 
 import java.util.Map;
 import java.util.Set;
+import org.junit.After;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
@@ -14,6 +15,11 @@ public class CarrinhoTest {
 	@Before
 	public void init() {
 		car = new Carrinho();
+	}
+
+	@After
+	public void cleanUp() {
+		car.clean();
 	}
 
 	@Test
@@ -30,6 +36,8 @@ public class CarrinhoTest {
 
 	@Test
 	public void limparCarrinhoTest() {
+		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
+		car.add(livro);
 		car.clean();
 		assertTrue(car.isEmpty());
 	}
@@ -48,12 +56,18 @@ public class CarrinhoTest {
 
 	@Test
 	public void identidadeDeProdutosTest() {
+		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
+		car.add(livro);
+		Produto geladeira = new Produto("Geladeira", 5000.00, Genero.CASA);
+		car.add(geladeira);
+		assertEquals(2, car.totalProdutos());
+		Produto livro2 = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
+		car.add(livro2);
 		assertEquals(2, car.totalItens());
 	}
 
 	@Test
 	public void adicionarXProdutosTest() throws ProdutoQuantidadeException {
-		car.clean();
 		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
 		car.add(livro, 5);
 		assertEquals(5, car.totalProdutos());
@@ -62,21 +76,18 @@ public class CarrinhoTest {
 
 	@Test(expected = ProdutoQuantidadeException.class)
 	public void adicionarXProdutosQuantidadeExceptionTest() throws ProdutoQuantidadeException {
-		car.clean();
 		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
 		car.add(livro, -5);
 	}
 
 	@Test(expected = ProdutoQuantidadeException.class)
 	public void adicionarZeroProdutosQuantidadeExceptionTest() throws ProdutoQuantidadeException {
-		car.clean();
 		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
 		car.add(livro, 0);
 	}
 
 	@Test
 	public void totalProdutosTest() throws CarrinhoVazioException, ProdutoQuantidadeException {
-		car.clean();
 		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
 		car.add(livro);
 		Produto geladeira = new Produto("Geladeira", 5000.00, Genero.CASA);
@@ -87,13 +98,16 @@ public class CarrinhoTest {
 	}
 
 	@Test
-	public void totalItensTest() throws CarrinhoVazioException {
+	public void totalItensTest() throws CarrinhoVazioException, ProdutoQuantidadeException {
+		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
+		car.add(livro, 7);
+		Produto geladeira = new Produto("Geladeira", 5000.00, Genero.CASA);
+		car.add(geladeira, 5);
 		assertEquals(2, car.totalItens());
 	}
 
 	@Test
 	public void totalProdutosItemTest() throws CarrinhoVazioException, ProdutoQuantidadeException {
-		car.clean();
 		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
 		car.add(livro, 10);
 		Produto geladeira = new Produto("Geladeira", 5000.00, Genero.CASA);
@@ -103,7 +117,6 @@ public class CarrinhoTest {
 
 	@Test
 	public void removerProdutoTest() throws CarrinhoVazioException, ProdutoInexistenteException, ProdutoQuantidadeException {
-		car.clean();
 		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
 		car.add(livro, 5);
 		car.removeProduto(livro);
@@ -113,7 +126,6 @@ public class CarrinhoTest {
 
 	@Test(expected = ProdutoInexistenteException.class)
 	public void removerProdutoInexistenteExceptionTest() throws CarrinhoVazioException, ProdutoInexistenteException, ProdutoQuantidadeException {
-		car.clean();
 		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
 		car.add(livro, 5);
 		Produto blusa = new Produto("Blusa verde", 73.0, Genero.MODA);
@@ -122,7 +134,6 @@ public class CarrinhoTest {
 
 	@Test(expected = CarrinhoVazioException.class)
 	public void removeProdutoDeCarrinhoVazioExceptionTest() throws CarrinhoVazioException, ProdutoInexistenteException {
-		car.clean();
 		Produto bala = new Produto("Bala", 0.45, Genero.ALIMENTO);
 		car.removeProduto(bala);
 	}
@@ -139,12 +150,13 @@ public class CarrinhoTest {
 	@Test(expected = ProdutoInexistenteException.class)
 	public void removerItemInexistenteExceptionTest() throws CarrinhoVazioException, ProdutoInexistenteException {
 		Produto blusa = new Produto("Blusa verde", 73.0, Genero.MODA);
+		Produto livro = new Produto("OOP Workbook", 83.5, Genero.LIVRO);
+		car.add(livro);
 		car.removeProduto(blusa);
 	}
 
 	@Test(expected = CarrinhoVazioException.class)
 	public void removerItemDeCarrinhoVazioExceptionTest() throws CarrinhoVazioException, ProdutoInexistenteException {
-		car.clean();
 		Produto bala = new Produto("Bala", 0.45, Genero.ALIMENTO);
 		car.removeProduto(bala);
 	}
@@ -159,7 +171,6 @@ public class CarrinhoTest {
 
 	@Test(expected = ProdutoQuantidadeException.class)
 	public void removerXProdutosQuantidadeExceptionTest() throws CarrinhoVazioException, ProdutoInexistenteException, ProdutoQuantidadeException {
-		car.clean();
 		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
 		car.add(livro, 2);
 		car.removeXProdutos(livro, 99);
@@ -168,25 +179,26 @@ public class CarrinhoTest {
 	@Test(expected = ProdutoQuantidadeException.class)
 	public void removerXProdutosQuantidade2ExceptionTest() throws CarrinhoVazioException, ProdutoInexistenteException, ProdutoQuantidadeException {
 		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
+		car.add(livro,5);
 		car.removeXProdutos(livro, -1);
 	}
 
 	@Test(expected = ProdutoInexistenteException.class)
 	public void removerXProdutosInexistenteExceptionTest() throws CarrinhoVazioException, ProdutoInexistenteException, ProdutoQuantidadeException {
+		Produto game = new Produto("Pacman", 35.3, Genero.JOGOS);
 		Produto chocolate = new Produto("Chocolate", 1.50, Genero.ALIMENTO);
+		car.add(game, 3);
 		car.removeXProdutos(chocolate, 3);
 	}
 
 	@Test(expected = CarrinhoVazioException.class)
 	public void removerXCarrinhoVazioExceptionTest() throws CarrinhoVazioException, ProdutoInexistenteException, ProdutoQuantidadeException {
-		car.clean();
 		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
 		car.removeXProdutos(livro, 99);
 	}
 
 	@Test
 	public void totalValorZeroTest() {
-		car.clean();
 		assertEquals(0.0, car.totalValor(), 0.0);
 	}
 
@@ -201,8 +213,7 @@ public class CarrinhoTest {
 	}
 
 	@Test
-	public void obterListaItensTest() throws CarrinhoVazioException, ProdutoQuantidadeException {
-		Carrinho car = new Carrinho();
+	public void obterListaItensTest() throws CarrinhoVazioException, ProdutoQuantidadeException, ProdutoInexistenteException {
 		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
 		car.add(livro, 2);
 		Produto geladeira = new Produto("Geladeira", 5000.00, Genero.CASA);
@@ -221,6 +232,7 @@ public class CarrinhoTest {
 		}
 		assertTrue(found);
 		found = false;
+		car.removeProduto(livro);
 		for (Map.Entry<Produto, Integer> e : x) {
 			if (e.getKey().equals(livro)) {
 				found = true;
@@ -238,7 +250,6 @@ public class CarrinhoTest {
 
 	@Test
 	public void obterListaProdutosTest() throws CarrinhoVazioException, ProdutoInexistenteException {
-		car.clean();
 		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
 		car.add(livro);
 		Produto geladeira = new Produto("Geladeira", 5000.00, Genero.CASA);
