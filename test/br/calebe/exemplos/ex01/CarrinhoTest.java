@@ -1,9 +1,13 @@
 package br.calebe.exemplos.ex01;
 
+import br.calebe.produto.Livro;
+import br.calebe.produto.Produto;
 import java.util.Map;
 import java.util.Set;
 import org.junit.After;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
@@ -29,14 +33,14 @@ public class CarrinhoTest {
 
 	@Test
 	public void adicionandoItemTest() {
-		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
+		Produto livro = new Livro("Java em 24 horas", 50.00);
 		car.add(livro);
 		assertEquals(1, car.totalItens());
 	}
 
 	@Test
 	public void limparCarrinhoTest() {
-		Produto livro = new Produto("Java em 24 horas", 50.00, Genero.LIVRO);
+		Produto livro = new Livro("Java em 24 horas", 50.00);
 		car.add(livro);
 		car.clean();
 		assertTrue(car.isEmpty());
