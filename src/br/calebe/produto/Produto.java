@@ -15,6 +15,6 @@ public abstract class Produto {
 	}
 
 	public int hashCode() {
-		return nome.hashCode() + Long.valueOf(Double.doubleToLongBits(preco)).hashCode();
+		return nome.hashCode() + Long.valueOf(Double.doubleToLongBits(preco)).hashCode() + getClass().hashCode();
 	}
 }

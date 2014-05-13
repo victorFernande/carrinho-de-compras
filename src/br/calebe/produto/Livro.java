@@ -8,6 +8,10 @@ public class Livro extends Produto {
 		super(nome, preco);
 	}
 	
+	public boolean equals(Object operando) {
+		return operando instanceof Livro?equals((Livro)operando):false;
+	}
+	
 	public boolean equals(Livro operando) {
 		return nome.equals(operando.nome) && preco == operando.preco;
 	}

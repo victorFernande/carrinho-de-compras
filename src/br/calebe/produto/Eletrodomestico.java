@@ -8,6 +8,10 @@ public class Eletrodomestico extends Produto {
 		super(nome, preco);
 	}
 	
+	public boolean equals(Object operando) {
+		return operando instanceof Eletrodomestico?equals((Eletrodomestico)operando):false;
+	}
+	
 	public boolean equals(Eletrodomestico operando) {
 		return nome.equals(operando.nome) && preco == operando.preco;
 	}
