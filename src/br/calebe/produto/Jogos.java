@@ -2,13 +2,13 @@ package br.calebe.produto;
 
 import br.calebe.produto.Produto;
 
-public class Eletrodomestico extends Produto {
+public class Jogos extends Produto {
 
-	public Eletrodomestico(String nome, double preco) {
+	public Jogos(String nome, double preco) {
 		super(nome, preco);
 	}
 	
-	public boolean equals(Eletrodomestico operando) {
+	public boolean equals(Jogos operando) {
 		return nome.equals(operando.nome) && preco == operando.preco;
 	}
 }
