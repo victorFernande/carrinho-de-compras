@@ -2,8 +2,8 @@ package br.calebe.exemplos.ex01;
 
 public abstract class Produto {
 
-	private String nome;
-	private double preco;
+	protected String nome;
+	protected double preco;
 
 	public Produto(String nome, double preco, Genero genero) {
 		this.nome = nome.toUpperCase();
