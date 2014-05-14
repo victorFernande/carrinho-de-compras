@@ -1,5 +1,6 @@
 package br.calebe.exemplos.ex01;
 
+import br.calebe.produto.Produto;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
